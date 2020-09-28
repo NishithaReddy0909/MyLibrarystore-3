@@ -1,0 +1,68 @@
+﻿@model BookDetails
+@*@{
+        ViewData["Title"] = "Details";
+    }*@
+
+@*@{
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }*@
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2 style="text-align:center;color:brown;">
+    Details of Book
+</h2>
+<div class="row">
+    <div class="col-md-5">
+
+        @using (Html.BeginForm("DeleteBook", "Book", new { id = Model.Id }, FormMethod.Post))
+        {
+            <button id="cmdDelete" type="submit" class="btn btn-outline-danger"> Delete </button>
+        }
+        <br />
+    </div>
+</div>
+
+<div class="Row">
+    <div class="col-md-12">
+        @if (Model != null)
+        {
+            <table class="table table-bordered table-hover">
+                <tr>
+                    <td>BookName</td>
+                    <td>@Model.BookName</td>
+                </tr>
+                <tr>
+                    <td>Author name</td>
+                    <td>@Model.Author</td>
+                </tr>
+                <tr>
+                    <td>ISBN</td>
+                    <td>@Model.ISBN</td>
+                </tr>
+                <tr>
+                    <td>Published Date</td>
+                    <td>@Model.PublishedDate</td>
+                </tr>
+                <tr>
+                    <td>Genre</td>
+                    <td>@Model.Genre</td>
+                </tr>
+            </table>
+        }
+
+        else
+        {
+            <h2>No Books Available</h2>
+        }
+
+    </div>
+</div>
+<div class="Row">
+    <div class="col-md-5">
+        @*<button asp-controller="Book" asp-action="Index" class="btn-outline-info">Back to Index</button>*@
+        <a asp-controller="Book" asp-action="Index">Back to Index</a>
+    </div>
+</div>
